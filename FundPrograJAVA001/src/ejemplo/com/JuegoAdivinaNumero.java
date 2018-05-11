@@ -7,7 +7,7 @@ public class JuegoAdivinaNumero extends Juego {
 	
 	public JuegoAdivinaNumero(int vidasInic, int num) {
 		super(vidasInic);
-		numeroPre = num;
+		this.numeroPre = num;
 	}
 	
 	public void Juega() {
