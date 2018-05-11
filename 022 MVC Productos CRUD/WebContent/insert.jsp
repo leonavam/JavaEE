@@ -18,7 +18,7 @@
 	<tr><td> Precio </td><td> <input type="text" name="precio">  </td></tr>
 	<tr><td> Fecha</td><td> <input type="text" name="fecha">  </td></tr>
 	<tr><td> Importado </td><td> <input type="text" name="importado">  </td></tr>
-	<tr><td> Pais de origen </td><td> <input type="text" name="paisOrigen">  </td></tr>
+	<tr><td> Pais de origenes </td><td> <input type="text" name="paisOrigen">  </td></tr>
 	<tr><td></td><td><input type="submit"></td></tr>
 	</table>
 
