@@ -15,12 +15,16 @@
 <%
 	ArrayList<String> arts = (ArrayList<String>)request.getSession().getAttribute("ARTICULOS");	
 
-	for(String name : arts){
-		out.println(name + "<br>");
+	if(arts == null){
+		for(String name : arts){
+			out.println(name + "<br>");
+		}
 	}
 
 %>
 <hr>
+
+<a href="Productos">Aplicación Real CRUD</a>
 
 
 </body>
