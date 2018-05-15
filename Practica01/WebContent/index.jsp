@@ -13,7 +13,6 @@
 <%
 	//Intentamos recuperar el usuario que ha iniciado sesión.
 	User user = (User) session.getAttribute("USER_LOGGED");
-
 	//Si no existe usuario mostramos por pantalla el formulario de login.
 	if (user == null){
 		//Si el servlet nos envió un mensaje lo ponemos encima del formulario.
@@ -53,8 +52,6 @@ Nombre:<input type="text" value="admin" name="NAME"><br>
 		</form>		
 		
 		<br><br>
-		<a href="secured/listar.jsp">Listar directo al archivo</a>
-		<br>
 		<a href="Control?ACTION_ID=LISTAR">Listar con Action</a>
 		<br>
 		<a href="Control?ACTION_ID=LOGOUT">Salir</a>

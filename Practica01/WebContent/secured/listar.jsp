@@ -20,7 +20,7 @@ Hashtable<String, User> users = ((Hashtable<String, User>)request.getServletCont
 for(Enumeration enumeration = users.elements(); enumeration.hasMoreElements();){
 	User user = (User) enumeration.nextElement();
 	
-	out.println(user.getName() + " " + user.getPass()+ " <a href=\"Control?ACTION_ID=DELETEUSER&NAME="+user.getName()+"&RESET=1\">Borrar</a><br>");
+	out.println(user.getName() + " " + user.getPass()+ " <a href=\"Control?ACTION_ID=DELETEUSER&NAME="+user.getName()+"\">Borrar</a><br>");
 }
 
 
