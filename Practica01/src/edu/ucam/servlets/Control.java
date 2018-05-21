@@ -42,6 +42,11 @@ public class Control extends HttpServlet {
 			actions.put("LISTAR", new ActionListar());
 			actions.put("ADDUSER", new ActionAddUser());
 			actions.put("DELETEUSER", new ActionDeleteUser());
+			actions.put("UPDATEUSER", new ActionModificarUser());
+			actions.put("ADDCURSO", new ActionAddCurso());
+			actions.put("LISTARCURSO", new ActionListarCurso());
+			actions.put("DELCURSO", new ActionDeleteCurso());
+			actions.put("UPDATECURSO", new ActionModificarCurso());
 			
 		}
 		
@@ -51,9 +56,10 @@ public class Control extends HttpServlet {
 			//Si no hay tabla la inicializamos
 			System.out.print("Inicializando tabla... ");
 			users = new Hashtable<String, User>();
-			users.put("admin", new User("admin", "1234"));
-			users.put("dad2", new User("dad2", "dad2"));
-			users.put("ucam", new User("ucam", "ucam"));
+			users.put("admin", new User("admin", "admin", "Administrador"));
+			users.put("dad2", new User("dad2", "dad2", "Gestor"));
+			users.put("ucam", new User("ucam", "ucam", "Gestor"));
+			
 			
 			
 			//Guardamos la tabla en el contexto.
@@ -75,20 +81,20 @@ public class Control extends HttpServlet {
 		String jsp = "/index.jsp";
 		
 		if(actionId == null){
-			System.out.println("No se ha definido acción a ejecutar");
+			System.out.println("No se ha definido acciÃ³n a ejecutar");
 		}else{
-			System.out.println("Acción a ejecutar: " + actionId);
+			System.out.println("AcciÃ³n a ejecutar: " + actionId);
 			Action action = this.actions.get(actionId);
 			
 			if(action == null){
-				System.out.println("La acción no está definida");
+				System.out.println("La acciÃ³n no estÃ¡ definida");
 			}else{
-				System.out.println("Acción implementada en " + action.toString());
+				System.out.println("AcciÃ³n implementada en " + action.toString());
 				jsp = action.execute(request, response);
 			}
 		}
 		
-		//Reenviamos la petición a la JSP.
+		//Reenviamos la peticiï¿½n a la JSP.
 		this.getServletContext().getRequestDispatcher(jsp).forward(request, response);
 		
 	}

@@ -12,17 +12,18 @@ public class ActionLogin extends Action {
 	@Override
 	public String execute(HttpServletRequest request,
 			HttpServletResponse response) {
-		//Recuperamos parámetros para hacer login
+		//Recuperamos parï¿½metros para hacer login
 		String name = request.getParameter("NAME");
 		String pass = request.getParameter("PASS");
 		
 		//Buscamos el usuario en la tabla de usuarios.
 		User user = ((Hashtable<String, User>)request.getServletContext().getAttribute("USERS")).get(name);
 		
-		//Si existe y la clave es válida hacemos login guardando el objeto user en la sesión del usuario.
+		//Si existe y la clave es vï¿½lida hacemos login guardando el objeto user en la sesiï¿½n del usuario.
 		if(user != null){			
 			if (user.getPass().equals(pass)){				
 				request.getSession().setAttribute("USER_LOGGED", user);
+				request.getSession().setAttribute("ROL", user.getRol());
 			}else{				
 				//Si no es correcta informamos al usuario mediante un mensaje en la JSP.
 				request.setAttribute("MSG", "Usuario incorrecto");

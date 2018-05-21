@@ -15,6 +15,7 @@ public class ActionAddUser extends Action {
 		// Recuperamos los valores del usuario a dar de alta
 		String name = request.getParameter("NAME");
 		String pass = request.getParameter("PASS");
+		String rol = request.getParameter("ROL");
 
 		// Intentamos recuperar el usuario para comprobar si ya existe.
 		User user = ((Hashtable<String, User>) request.getServletContext().getAttribute("USERS")).get(name);
@@ -26,7 +27,7 @@ public class ActionAddUser extends Action {
 			// Si no es null de debe a que el usuario no existe. Creamos el objeto con los
 			// valores
 			// recuperados del formulario
-			user = new User(name, pass);
+			user = new User(name, pass, rol);
 
 			// Guardamos el usuario en la tabla hash que hay en el contexto. Desde este
 			// momento

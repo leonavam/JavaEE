@@ -7,7 +7,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>Insert title here</title>
+<title>Lista usuarios</title>
 </head>
 <body>
 <h3>Listado usarios</h3><br>
@@ -20,7 +20,9 @@ Hashtable<String, User> users = ((Hashtable<String, User>)request.getServletCont
 for(Enumeration enumeration = users.elements(); enumeration.hasMoreElements();){
 	User user = (User) enumeration.nextElement();
 	
-	out.println(user.getName() + " " + user.getPass()+ " <a href=\"Control?ACTION_ID=DELETEUSER&NAME="+user.getName()+"\">Borrar</a><br>");
+	out.println(user.getName() + " " + user.getPass()+ " " + user.getRol() 
+	+ " <a href=\"Control?ACTION_ID=UPDATEUSER&NAME="+user.getName()+"\">Actualizar</a> "
+	+ " <a href=\"Control?ACTION_ID=DELETEUSER&NAME="+user.getName()+"\">Borrar</a><br>");
 }
 
 
