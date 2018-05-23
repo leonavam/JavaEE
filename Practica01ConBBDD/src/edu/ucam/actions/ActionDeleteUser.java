@@ -15,7 +15,7 @@ public class ActionDeleteUser extends Action {
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		//Recuperamos los valores del usuario a dar de alta
 				String name = request.getParameter("NAME");
-				Factory factory = null;
+				Factory factory = Factory.getTypeFactory(Factory.MYSQL) ;
 				UserDAO userDAO = factory.getUserDAO();
 				
 				//Intentamos recuperar el usuario para comprobar si ya existe.

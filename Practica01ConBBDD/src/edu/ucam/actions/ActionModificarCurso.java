@@ -18,6 +18,9 @@ public class ActionModificarCurso extends Action {
 		
 		System.out.println("pasamos las lecturas!!!!");
 		Hashtable<String, Curso> cursos = (Hashtable<String, Curso>) request.getServletContext().getAttribute("CURSOS");
+		if (cursos == null) {
+			System.out.println("No hay datos en CURSOS");
+		}
 		Curso curso = cursos.get(nameCurso);
 		
 		if(update == null) {

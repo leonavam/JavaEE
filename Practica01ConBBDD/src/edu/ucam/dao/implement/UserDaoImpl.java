@@ -21,7 +21,7 @@ public class UserDaoImpl implements UserDAO {
 	private final String SQL_SELECT = "SELECT * FROM users";
 	private final String SQL_INSERT = "INSERT INTO users(username, pass, rol) VALUES(?,?,?)";
 	private final String SQL_UPDATE = "UPDATE users SET username=?, pass=?, rol=? WHERE IDUser=?";
-	private final String SQL_DELETE = "DELETE FROM users WHERE id_user= ?";
+	private final String SQL_DELETE = "DELETE FROM users WHERE IDUser= ?";
 	
 	@Override
 	public int insertUser(User user) {
