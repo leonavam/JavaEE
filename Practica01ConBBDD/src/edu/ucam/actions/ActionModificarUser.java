@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import edu.ucam.beans.Curso;
 import edu.ucam.beans.User;
+import edu.ucam.dao.Factory;
+import edu.ucam.dao.UserDAO;
 
 public class ActionModificarUser extends Action {
 
@@ -19,16 +21,27 @@ public class ActionModificarUser extends Action {
 		String update = request.getParameter("UPDATEOK");
 		String jsp = null;
 		
-		Hashtable<String, User> users = (Hashtable<String, User>) request.getServletContext().getAttribute("USERS");
+		Factory factory = Factory.getTypeFactory(Factory.MYSQL);
+		UserDAO userDAO = factory.getUserDAO();
+		
+		//Hashtable<String, User> users = (Hashtable<String, User>) request.getServletContext().getAttribute("USERS");
+		Hashtable<String, User> users = userDAO.selectUser(); 
+		request.getServletContext().setAttribute("USERS", users);
 		User user = users.get(name);
 		
 		if(update == null) {
+			request.setAttribute("ID", user.getId());
 			request.setAttribute("UPNAME", user.getName());
 			jsp = "/secured/update.jsp";
 			
 		}else {
-			User upUser = new User(name, pass, rol);
-			users.put(name, upUser);
+			int id = Integer.parseInt(request.getParameter("ID"));
+			System.out.println("\tlectura de id: " + id);
+			User upUser = new User(id,name, pass, rol);
+			((Hashtable<String, User>) request.getServletContext().getAttribute("USERS")).put(name, upUser);
+			
+			userDAO.updatetUser(upUser);
+			
 			jsp = "/secured/listar.jsp";
 		}
 		

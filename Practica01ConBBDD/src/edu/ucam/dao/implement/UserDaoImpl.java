@@ -20,7 +20,7 @@ public class UserDaoImpl implements UserDAO {
 	//Sentencias SQL Usuarios
 	private final String SQL_SELECT = "SELECT * FROM users";
 	private final String SQL_INSERT = "INSERT INTO users(username, pass, rol) VALUES(?,?,?)";
-	private final String SQL_UPDATE = "UPDATE users SET username=?, pass=?, rol=? WHERE id_user=?";
+	private final String SQL_UPDATE = "UPDATE users SET username=?, pass=?, rol=? WHERE IDUser=?";
 	private final String SQL_DELETE = "DELETE FROM users WHERE id_user= ?";
 	
 	@Override
@@ -40,7 +40,6 @@ public class UserDaoImpl implements UserDAO {
 			System.out.println("Fallo BBDD");
 			e.printStackTrace();
 		} finally {
-			MyConnectionSQL.close(rs);
 			MyConnectionSQL.close(ps);
 			MyConnectionSQL.close(myConn);
 		}
@@ -50,14 +49,46 @@ public class UserDaoImpl implements UserDAO {
 
 	@Override
 	public int updatetUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		int row = 0;
+		
+		try {
+			
+			myConn = MyConnectionSQL.getConection();
+			ps = myConn.prepareStatement(SQL_UPDATE);
+			ps.setString(1, user.getName());
+			ps.setString(2, user.getPass());
+			ps.setString(3, user.getRol());
+			ps.setInt(4, user.getId());
+			
+			row = ps.executeUpdate();
+			System.out.println("----->\t Filas actualizadas " + row);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		return row;
 	}
 
 	@Override
 	public int deleteUser(User user) {
-		// TODO Auto-generated method stub
-		return 0;
+		
+		int row = 0;
+		
+		try {
+			myConn = MyConnectionSQL.getConection();	//Obtiene la conexion con MySQL
+			ps = myConn.prepareStatement(SQL_DELETE);
+			ps.setInt(1, user.getId());
+			
+			row = ps.executeUpdate();
+			
+			System.out.println();
+			
+		} catch (SQLException e) {
+			System.out.println("No se ha elimnado el usuario");
+			e.printStackTrace();
+		}
+		
+		return row;
 	}
 
 	@Override
@@ -72,7 +103,7 @@ public class UserDaoImpl implements UserDAO {
 			
 			User user = null;
 			while (rs.next()) {
-				user = new User(rs.getString(2), rs.getString(3), rs.getString(4));
+				user = new User(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4));
 				users.put(rs.getString("USERNAME"), user);
 			}
 			
