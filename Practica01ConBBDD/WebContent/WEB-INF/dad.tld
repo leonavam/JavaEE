@@ -1,0 +1,21 @@
+<taglib>
+    <tlib-version>1.0</tlib-version>
+    <jsp-version>1.2</jsp-version>
+    <short-name>hola</short-name>
+    <uri>mistags</uri>
+    <description>Etiquetas de ejemplo</description>
+	
+    <tag>
+    <name>count</name>
+        <tag-class>edu.ucam.tags.CuentaCursosTag</tag-class>
+        <body-content>empty</body-content>
+        <info>Muestra el numero de cursos</info>
+       
+    </tag>
+    
+    <tag>
+    <name>control</name>
+        <tag-class>edu.ucam.tags.ControlAccesoTag</tag-class>        
+        <info>Control de acceso</info>       
+    </tag>
+</taglib>
