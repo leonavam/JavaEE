@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.ucam.beans.Curso;
+import edu.ucam.dao.CursoDAO;
+import edu.ucam.dao.Factory;
 
 public class ActionAddCurso extends Action {
 
@@ -16,7 +18,11 @@ public class ActionAddCurso extends Action {
 		String nameCurso = request.getParameter("NAMECURSO");
 		double creditos = Double.parseDouble(request.getParameter("CREDITOS"));
 		String profesor = request.getParameter("PROFESOR");
-
+	
+		//Para la BBDD
+		Factory factory = Factory.getTypeFactory(Factory.MYSQL);
+		CursoDAO cDao = factory.getCursoDAO();
+		
 		
 		Hashtable<String, Curso> cursos = (Hashtable<String, Curso>) request.getServletContext().getAttribute("CURSOS");
 		
@@ -28,20 +34,12 @@ public class ActionAddCurso extends Action {
 		if (cursos == null) {
 			cursos = new Hashtable<String, Curso>();
 			cursos.put(nameCurso, curso);
-			request.setAttribute("MSGc", "Tabla creada y añadido Curso");
-			
 		} else {
 			cursos.put(nameCurso, curso);
-			request.setAttribute("MSGc", "Curso añadido!");
 		}
-		
-		Enumeration e = cursos.keys();
-		Object clave;
-		while( e.hasMoreElements() ){
-			  clave = e.nextElement();
-			  System.out.println( "Clave : " + clave );
-			}
-		
+		request.setAttribute("MSGc", "Curso añadido!");
+		//Añade el curso a la BBDD
+		cDao.insert(curso);
 		
 		request.getServletContext().setAttribute("CURSOS", cursos);
 		

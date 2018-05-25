@@ -1,0 +1,22 @@
+header{
+    background:  #138d75;
+    color: #fff;
+}
+
+h1{
+    padding: 10px;
+}
+
+footer{
+    background:  #138d75 ;
+    color: #fff;
+    position:fixed;
+    bottom: 0%;
+    width: 100%;
+    
+}
+p{
+    padding: 10px;
+    font-size: 18px;
+  
+}

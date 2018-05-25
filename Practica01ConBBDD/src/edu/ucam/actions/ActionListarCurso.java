@@ -6,13 +6,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.ucam.beans.Curso;
+import edu.ucam.dao.CursoDAO;
+import edu.ucam.dao.Factory;
 
 public class ActionListarCurso extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
 		
-		Hashtable<String, Curso> cursos = (Hashtable<String, Curso>) request.getServletContext().getAttribute("CURSOS");
+		Factory factory = Factory.getTypeFactory(Factory.MYSQL);
+		CursoDAO cursoDAO = factory.getCursoDAO();
+		
+		Hashtable<String, Curso> cursos = cursoDAO.select();
+		request.getServletContext().setAttribute("CURSOS", cursos);
 		
 		String jsp = "/index.jsp";
 		

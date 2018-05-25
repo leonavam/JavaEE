@@ -86,6 +86,9 @@ public class UserDaoImpl implements UserDAO {
 		} catch (SQLException e) {
 			System.out.println("No se ha elimnado el usuario");
 			e.printStackTrace();
+		} finally {
+			MyConnectionSQL.close(ps);
+			MyConnectionSQL.close(myConn);
 		}
 		
 		return row;
