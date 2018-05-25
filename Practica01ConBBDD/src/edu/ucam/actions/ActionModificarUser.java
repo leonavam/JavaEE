@@ -14,41 +14,38 @@ public class ActionModificarUser extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		String name = request.getParameter("NAME");
 		String pass = request.getParameter("PASS");
 		String rol = request.getParameter("ROL");
 		String update = request.getParameter("UPDATEOK");
 		String jsp = null;
-		
+
 		Factory factory = Factory.getTypeFactory(Factory.MYSQL);
 		UserDAO userDAO = factory.getUserDAO();
-		
-		//Hashtable<String, User> users = (Hashtable<String, User>) request.getServletContext().getAttribute("USERS");
-		Hashtable<String, User> users = userDAO.selectUser(); 
+
+		Hashtable<String, User> users = userDAO.selectUser();
 		request.getServletContext().setAttribute("USERS", users);
 		User user = users.get(name);
-		
-		if(update == null) {
+
+		if (update == null) {
 			request.setAttribute("ID", user.getId());
 			request.setAttribute("UPNAME", user.getName());
 			jsp = "/secured/update.jsp";
-			
-		}else {
+
+		} else {
 			int id = Integer.parseInt(request.getParameter("ID"));
 			System.out.println("\tlectura de id: " + id);
-			User upUser = new User(id,name, pass, rol);
+			User upUser = new User(id, name, pass, rol);
 			((Hashtable<String, User>) request.getServletContext().getAttribute("USERS")).put(name, upUser);
-			
+
 			userDAO.updatetUser(upUser);
-			
+
 			jsp = "/secured/listar.jsp";
 		}
-		
-		
+
 		return jsp;
-		
-		
+
 	}
 
 }

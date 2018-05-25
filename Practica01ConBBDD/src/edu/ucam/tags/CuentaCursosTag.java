@@ -8,13 +8,13 @@ import javax.servlet.jsp.tagext.BodyTagSupport;
 
 import edu.ucam.beans.Curso;
 
-public class CuentaCursosTag extends BodyTagSupport{
-	
-	
+public class CuentaCursosTag extends BodyTagSupport {
+
 	@Override
 	public int doStartTag() throws JspException {
-		
-		Hashtable<String, Curso> cursos = ((Hashtable<String, Curso>)this.pageContext.getServletContext().getAttribute("CURSOS"));
+
+		Hashtable<String, Curso> cursos = ((Hashtable<String, Curso>) this.pageContext.getServletContext()
+				.getAttribute("CURSOS"));
 
 		try {
 			if (cursos == null) {
@@ -25,7 +25,7 @@ public class CuentaCursosTag extends BodyTagSupport{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		
+
 		return super.doStartTag();
 	}
 

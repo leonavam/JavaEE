@@ -7,7 +7,7 @@ public class ActionListar extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		return "/secured/listar.jsp";
 	}
 

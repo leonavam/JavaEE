@@ -12,7 +12,7 @@ public class FactoryMySQL extends Factory {
 
 	@Override
 	public UserDAO getUserDAO() {
-		return new UserDaoImpl();  //Devulve la implementación de SQL
+		return new UserDaoImpl(); // Devulve la implementación de SQL
 	}
 
 	@Override
@@ -24,7 +24,5 @@ public class FactoryMySQL extends Factory {
 	public CursoDAO getCursoDAO() {
 		return new CursoDaoImpl();
 	}
-	
-	
 
 }

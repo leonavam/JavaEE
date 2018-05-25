@@ -4,28 +4,27 @@ body {
 }
 
 a:link, a:visited {
-    background-color: #f44336;
-    color: white;
-    padding: 1px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+	background-color: #f44336;
+	color: white;
+	padding: 1px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
 }
-
 
 a:hover, a:active {
-    background-color: red;
+	background-color: red;
 }
 
-a#update:link, a#update:visited{
+a#update:link, a#update:visited {
 	background-color: rgb(60, 179, 113);
-    color: white;
-    padding: 1px 15px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
+	color: white;
+	padding: 1px 15px;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
 }
 
 a#update:hover, a#update:active {
-	 background-color: rgb(60, 179, 50);
+	background-color: rgb(60, 179, 50);
 }

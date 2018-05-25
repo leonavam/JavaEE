@@ -5,7 +5,7 @@ public class User {
 	private String pass;
 	private String rol;
 	private int id;
-	
+
 	public User(String name, String pass, String rol) {
 		super();
 
@@ -13,27 +13,27 @@ public class User {
 		this.pass = pass;
 		this.rol = rol;
 	}
-	
-	public User(int id,String name, String pass, String rol) {
+
+	public User(int id, String name, String pass, String rol) {
 		super();
 		this.setId(id);
 		this.name = name;
 		this.pass = pass;
 		this.rol = rol;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
-	
+
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public String getPass() {
 		return pass;
 	}
-	
+
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
@@ -53,9 +53,5 @@ public class User {
 	public void setId(int id) {
 		this.id = id;
 	}
-	
-	
-	
-	
-	
+
 }

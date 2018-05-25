@@ -7,9 +7,9 @@ public class ActionLogout extends Action {
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		
+
 		request.getSession().removeAttribute("USER_LOGGED");
-			System.out.println("saliste");
+		System.out.println("saliste");
 		return "/index.jsp";
 	}
 

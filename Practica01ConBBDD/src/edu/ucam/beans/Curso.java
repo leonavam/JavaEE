@@ -1,12 +1,12 @@
 package edu.ucam.beans;
 
 public class Curso {
-	
+
 	private int idCurso;
 	private String nombreCurso;
 	private double creditos;
 	private String profesor;
-	
+
 	public Curso() {
 		// TODO Auto-generated constructor stub
 	}
@@ -42,8 +42,5 @@ public class Curso {
 	public void setProfesor(String profesor) {
 		this.profesor = profesor;
 	}
-
-	
-	
 
 }

@@ -21,19 +21,18 @@ public class ActionDaoIml implements ActionDAO {
 
 	// Sentencias SQL Usuarios
 	private final String SQL_SELECT = "SELECT * FROM actions";
-	
-	
+
 	@Override
 	public Hashtable<String, Action> loadActions() {
-		
-		//Tabla ha devolver en return
+
+		// Tabla ha devolver en return
 		Hashtable<String, Action> actions = new Hashtable<>();
-		
+
 		try {
-			myConn = MyConnectionSQL.getConection();	//Obtiene la conexion con MySQL
+			myConn = MyConnectionSQL.getConection(); // Obtiene la conexion con MySQL
 			ps = myConn.prepareStatement(SQL_SELECT);
 			rs = ps.executeQuery();
-			
+
 			Action action = null;
 			String id = null;
 			while (rs.next()) {
@@ -42,26 +41,24 @@ public class ActionDaoIml implements ActionDAO {
 				System.out.println("add: " + id + " " + action);
 				actions.put(id.toUpperCase(), action);
 			}
-			
+
 		} catch (SQLException e) {
-			System.out.println("Error de SQL: "+ e.toString());
+			System.out.println("Error de SQL: " + e.toString());
 		} catch (InstantiationException e) {
 			e.printStackTrace();
 		} catch (IllegalAccessException e) {
 			e.printStackTrace();
 		} catch (ClassNotFoundException e) {
 			e.printStackTrace();
-		} finally{
-				MyConnectionSQL.close(rs);
-				MyConnectionSQL.close(ps);
-				MyConnectionSQL.close(myConn);
+		} finally {
+			MyConnectionSQL.close(rs);
+			MyConnectionSQL.close(ps);
+			MyConnectionSQL.close(myConn);
 		}
-		
+
 		System.out.println("Lectura Actions OK");
-		
+
 		return actions;
 	}
-	
-	
 
 }

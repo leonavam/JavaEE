@@ -13,30 +13,29 @@ import edu.ucam.dao.UserDAO;
 import edu.ucam.dao.mysql.MyConnectionSQL;
 
 public class CursoDaoImpl implements CursoDAO {
-	
-	
-	//Para crear la conexion
+
+	// Para crear la conexion
 	Connection myConn = null;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
-	
-	//Sentencias SQL Usuarios
+
+	// Sentencias SQL Usuarios
 	private final String SQL_SELECT = "SELECT * FROM cursos";
 	private final String SQL_INSERT = "INSERT INTO cursos(nombreCurso, creditos, profesor) VALUES(?,?,?)";
 	private final String SQL_UPDATE = "UPDATE cursos SET nombreCurso=?, creditos=?, profesor=? WHERE idcursos=?";
 	private final String SQL_DELETE = "DELETE FROM cursos WHERE idcursos= ?";
-	
+
 	@Override
 	public int insert(Curso curso) {
-		int rows = 0 ;
-		
+		int rows = 0;
+
 		try {
 			myConn = MyConnectionSQL.getConection();
 			ps = myConn.prepareStatement(SQL_INSERT);
 			ps.setString(1, curso.getNombreCurso());
 			ps.setDouble(2, curso.getCreditos());
 			ps.setString(3, curso.getProfesor());
-			
+
 			rows = ps.executeUpdate();
 			System.out.println("Se ha insertado " + rows + " filas");
 		} catch (SQLException e) {
@@ -46,9 +45,10 @@ public class CursoDaoImpl implements CursoDAO {
 			MyConnectionSQL.close(ps);
 			MyConnectionSQL.close(myConn);
 		}
-		
+
 		return rows;
 	}
+
 	@Override
 	public int updatet(Curso curso) {
 		int rows = 0;
@@ -62,7 +62,7 @@ public class CursoDaoImpl implements CursoDAO {
 			System.out.println(curso.getNombreCurso() + curso.getIdCurso() + curso.getCreditos() + curso.getProfesor());
 			rows = ps.executeUpdate();
 			System.out.println("Se ha actualizado " + rows + " registros");
-			
+
 		} catch (SQLException e) {
 			System.out.println("Fallo en la sentencia " + SQL_UPDATE);
 			e.printStackTrace();
@@ -71,21 +71,21 @@ public class CursoDaoImpl implements CursoDAO {
 			MyConnectionSQL.close(myConn);
 		}
 
-		
 		return 0;
 	}
+
 	@Override
 	public int delete(Curso curso) {
 		int rows = 0;
-		
+
 		try {
 			myConn = MyConnectionSQL.getConection();
 			ps = myConn.prepareStatement(SQL_DELETE);
 			ps.setInt(1, curso.getIdCurso());
-			
+
 			rows = ps.executeUpdate();
 			System.out.println("Se ha borrado " + rows + " registros");
-			
+
 		} catch (SQLException e) {
 			System.out.println("Fallo en la sentencia: " + SQL_DELETE);
 			e.printStackTrace();
@@ -93,18 +93,19 @@ public class CursoDaoImpl implements CursoDAO {
 			MyConnectionSQL.close(ps);
 			MyConnectionSQL.close(myConn);
 		}
-		
+
 		return rows;
 	}
+
 	@Override
 	public Hashtable<String, Curso> select() {
-		
+
 		Hashtable<String, Curso> cursos = new Hashtable<>();
 		try {
 			myConn = MyConnectionSQL.getConection();
 			ps = myConn.prepareStatement(SQL_SELECT);
 			rs = ps.executeQuery();
-			
+
 			Curso curso = null;
 			while (rs.next()) {
 				curso = new Curso();
@@ -115,22 +116,18 @@ public class CursoDaoImpl implements CursoDAO {
 
 				cursos.put(curso.getNombreCurso(), curso);
 			}
-			
+
 		} catch (SQLException e) {
 			System.out.println("Fallo en la sentencia: " + SQL_SELECT);
 			e.printStackTrace();
-			
+
 		} finally {
 			MyConnectionSQL.close(rs);
 			MyConnectionSQL.close(ps);
 			MyConnectionSQL.close(myConn);
 		}
-		
+
 		return cursos;
 	}
-	
-
-	
-
 
 }

@@ -18,8 +18,8 @@ public class ActionAddUser extends Action {
 		String name = request.getParameter("NAME");
 		String pass = request.getParameter("PASS");
 		String rol = request.getParameter("ROL");
-		
-		//Para conexión con BBDD
+
+		// Para conexión con BBDD
 		Factory factory = null;
 		UserDAO userDAO = null;
 
@@ -39,7 +39,7 @@ public class ActionAddUser extends Action {
 			// momento
 			// el usuario ya puede hacer login.
 			((Hashtable<String, User>) request.getServletContext().getAttribute("USERS")).put(name, user);
-			
+
 			factory = Factory.getTypeFactory(Factory.MYSQL);
 			userDAO = factory.getUserDAO();
 			userDAO.insertUser(user);

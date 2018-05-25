@@ -7,5 +7,5 @@ import edu.ucam.actions.Action;
 public interface ActionDAO {
 
 	public Hashtable<String, Action> loadActions();
-	
+
 }
