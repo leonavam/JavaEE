@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="020 Etiquetas TagLibs II">
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+        <property name="context-root" value="020_Etiquetas_TagLibs_II"/>
+        <property name="java-output-path" value="/020 Etiquetas TagLibs II/build/classes"/>
+    </wb-module>
+</project-modules>

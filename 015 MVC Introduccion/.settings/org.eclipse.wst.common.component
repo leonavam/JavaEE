@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+        
+    <wb-module deploy-name="015 MVC Introduccion">
+                
+        <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
+                
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/src"/>
+                
+        <property name="context-root" value="015_MVC"/>
+                
+        <property name="java-output-path" value="/015 MVC Introduccion/build/classes"/>
+            
+    </wb-module>
+    
+</project-modules>
