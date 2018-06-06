@@ -21,7 +21,7 @@ public class MyConnectionSQL {
 			driver = (Driver) jdbcDriverClass.newInstance();
 			DriverManager.registerDriver(driver);
 		} catch (Exception e) {
-			System.out.println("Falló al cargar el driver JDBC");
+			System.out.println("Fall&oacute al cargar el driver JDBC");
 			e.printStackTrace();
 		}
 		return DriverManager.getConnection(JDBC_URL, JDBC_USER, JDBC_PASS);

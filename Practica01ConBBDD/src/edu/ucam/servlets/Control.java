@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import edu.ucam.actions.Action;
+import edu.ucam.beans.Curso;
 import edu.ucam.beans.User;
 import edu.ucam.dao.ActionDAO;
 import edu.ucam.dao.Factory;
@@ -43,8 +44,8 @@ public class Control extends HttpServlet {
 		// Carga las acciones al iniciar el servlet
 		actionDAO = factory.getActionDAO();
 		actions = actionDAO.loadActions();
-
-		// Guarda los usuarios en el contexto
+		
+		this.getServletContext().setAttribute("CURSOS", factory.getCursoDAO().select());
 
 	}
 
@@ -60,15 +61,13 @@ public class Control extends HttpServlet {
 		String jsp = "/index.jsp";
 
 		if (actionId == null) {
-			System.out.println("No se ha definido acci贸n a ejecutar");
+			System.out.println("No se ha definido acci髇 a ejecutar");
 		} else {
-			System.out.println("Acci贸n a ejecutar: " + actionId);
 			Action action = this.actions.get(actionId);
 
 			if (action == null) {
 				System.out.println("La acci贸n no est谩 definida");
 			} else {
-				System.out.println("Acci贸n implementada en " + action.toString());
 				jsp = action.execute(request, response);
 			}
 		}

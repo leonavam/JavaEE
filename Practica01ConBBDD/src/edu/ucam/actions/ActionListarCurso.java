@@ -19,7 +19,7 @@ public class ActionListarCurso extends Action {
 
 		Hashtable<String, Curso> cursos = cursoDAO.select();
 		request.getServletContext().setAttribute("CURSOS", cursos);
-
+		
 		String jsp = "/index.jsp";
 
 		if (cursos != null) {

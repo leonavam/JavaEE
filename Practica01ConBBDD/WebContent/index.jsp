@@ -27,9 +27,9 @@
 			<div class="w3-container w3-center w3-animate-opacity">
 				<form action="Control?ACTION_ID=LOGIN" method="post">
 					<input class="login-input" type="text" name="NAME" required
-						placeholder="Usuario" autofocus><br> <input
+						placeholder="Usuario" autofocus value="admin"><br> <input
 						class="login-input" type="text" name="PASS" required
-						placeholder="Contraseña"><br> <input type="submit"
+						placeholder="Contraseña" value="admin"><br> <input type="submit"
 						value="Login">
 				</form>
 				<div class="w3-container w3-red">${MSG}</div>
@@ -39,7 +39,7 @@
 	<%		
 	}else if(user != null && !("Gestor".equals(rol))){
 		//Si el usuario es Administrador podrá ver los cruds correspondientes	
-%>
+	%>
 
 	<div class="w3-container w3-teal">
 		<h1>GESTION DE ACADEMIA</h1>
@@ -86,7 +86,7 @@
 							</tr>
 							<tr>
 								<td></td>
-								<td><input type="submit"></td>
+								<td><input type="submit" value="A&ntilde;adir Usuario"></td>
 							</tr>
 						</table>
 
@@ -124,7 +124,7 @@
 									required></td>
 							<tr>
 								<td></td>
-								<td><input type="submit"></td>
+								<td><input type="submit" value="A&ntilde;adir Curso"></td>
 							</tr>
 						</table>
 					</form>
@@ -174,7 +174,7 @@
 						<td><b>Profesor:</b></td>
 						<td><input type="text" name="PROFESOR" value="profesor1"
 							required></td> 
-					<tr><td></td><td><input type="submit"></td></tr>
+					<tr><td></td><td><input type="submit" value="A&ntilde;adir Curso"></td></tr>
 				</table>
 				
 			</form>

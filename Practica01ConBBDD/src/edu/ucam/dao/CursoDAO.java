@@ -13,5 +13,6 @@ public interface CursoDAO {
 	public int delete(Curso curso);
 
 	public Hashtable<String, Curso> select();
+	
 
 }

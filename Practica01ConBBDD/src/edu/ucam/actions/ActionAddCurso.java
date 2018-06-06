@@ -24,21 +24,28 @@ public class ActionAddCurso extends Action {
 		CursoDAO cDao = factory.getCursoDAO();
 
 		Hashtable<String, Curso> cursos = (Hashtable<String, Curso>) request.getServletContext().getAttribute("CURSOS");
+		Curso cursoHash = ((Hashtable<String, Curso>) request.getServletContext().getAttribute("CURSOS"))
+				.get(nameCurso);
 
-		Curso curso = new Curso();
-		curso.setNombreCurso(nameCurso);
-		curso.setCreditos(creditos);
-		curso.setProfesor(profesor);
-
-		if (cursos == null) {
-			cursos = new Hashtable<String, Curso>();
-			cursos.put(nameCurso, curso);
+		if (cursoHash != null) {
+			request.setAttribute("MSGc", "El curso ya existe");
 		} else {
-			cursos.put(nameCurso, curso);
+			Curso curso = new Curso();
+			curso.setNombreCurso(nameCurso);
+			curso.setCreditos(creditos);
+			curso.setProfesor(profesor);
+
+			if (cursos == null) {
+				cursos = new Hashtable<String, Curso>();
+				cursos.put(nameCurso, curso);
+			} else {
+				cursos.put(nameCurso, curso);
+			}
+			request.setAttribute("MSGc", "Curso a&ntildeadido!");
+
+			// Añade el curso a la BBDD
+			cDao.insert(curso);
 		}
-		request.setAttribute("MSGc", "Curso añadido!");
-		// Añade el curso a la BBDD
-		cDao.insert(curso);
 
 		request.getServletContext().setAttribute("CURSOS", cursos);
 

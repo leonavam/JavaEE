@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="edu.ucam.beans.Curso"%>
 <%@page import="java.util.Enumeration"%>
 <%@page import="java.util.Hashtable"%>
@@ -17,12 +18,10 @@
 		<div class="w3-container w3-center w3-animate-opacity">
 			<h3>Listado de Cursos</h3>
 			<br>
-
-			<%
-
-Hashtable<String, Curso> cursos = ((Hashtable<String, Curso>)request.getServletContext().getAttribute("CURSOS"));
-
-%>
+			
+	<%
+	Hashtable<String, Curso> cursos = ((Hashtable<String, Curso>)request.getServletContext().getAttribute("CURSOS"));
+	%>
 
 			<table class="w3-table-all">
 				<tr class="w3-teal">
@@ -55,8 +54,6 @@ for(Enumeration enumeration = cursos.elements(); enumeration.hasMoreElements();)
 }
 %>
 			</table>
-
-
 
 			<br>
 			<br>
